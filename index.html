@@ -7,6 +7,29 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
+    .wa-float {
+    position: fixed;
+    top: 80%;              /* posisinya di tengah layar */
+    right: 20px;           /* geser ke kanan */
+    transform: translateY(-50%); /* beneran pas tengah */
+    background-color: #25D366;
+    color: white;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    z-index: 999;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+.wa-float:hover {
+    transform: translateY(-50%) scale(1.1);
+    background-color: #1ebe5d;
+}
         * {
             margin: 0;
             padding: 0;
@@ -37,6 +60,43 @@
             position: relative;
             overflow-x: hidden;
         }
+        /* Modal Foto Profil */
+.profile-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
+}
+
+.profile-modal img {
+  margin: auto;
+  display: block;
+  max-width: 80%;
+  max-height: 80%;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+.profile-modal .close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.profile-modal .close:hover {
+  color: #bbb;
+}
         
         /* Background dengan geometric pattern subtle */
         body::before {
@@ -461,9 +521,21 @@
                 padding: 14px 18px;
             }
         }
+        
     </style>
 </head>
 <body>
+ <!-- Tombol WhatsApp mengambang -->
+<a href="https://wa.me/6281312161726" class="wa-float" target="_blank">
+  <i class="fab fa-whatsapp"></i>
+</a>
+ 
+  <!-- Modal Foto Profil -->
+<div id="profile-modal" class="profile-modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modal-img">
+</div>
+  
     <div class="container">
         <!-- Header dengan Logo Yamaha -->
         <div class="header">
@@ -473,7 +545,7 @@
         <!-- Section Profil -->
         <div class="profile-section">
             <div class="profile-img-container" id="profile-img-container">
-                <img src="https://www.imghippo.com/i/NlyB9907hyM.jpg" alt="Nur Cahyadi" class="profile-img" id="profile-img">
+                <img src="https://i.imghippo.com/files/HkUQ2200Wj.jpg" alt="Nur Cahyadi" class="profile-img" id="profile-img">
             </div>
             <h1 class="name">Nur Cahyadi</h1>
             <p class="title">Sales Executive Yamaha Sulawesi Selatan</p>
@@ -496,81 +568,318 @@ perusahaan kami bergerak di bidang otomotif penjualan sepeda motor yamaha se sul
             </div>
         </div>
         
-        <!-- Info Pembayaran -->
-        <div class="payment-info">
-            <h3 class="payment-title">Kami Menerima Pembayaran</h3>
-            <div class="payment-methods">
-                <span class="payment-method">Cash</span>
-                <span class="payment-method">Kredit</span>
-                <span class="payment-method">Transfer Bank</span>
+<!-- Info Pembayaran -->
+<div class="payment-info">
+    <h3 class="payment-title">Kami Menerima Pembayaran</h3>
+    <div class="payment-methods">
+        <a href="https://wa.me/6281312161726?text=Halo%20saya%20ingin%20bertanya%20syarat%20pembelian%20cash" 
+           target="_blank" 
+           class="payment-method">Cash</a>
+        <a href="https://wa.me/6281312161726?text=Halo%20saya%20ingin%20bertanya%20syarat%20pembelian%20kredit" 
+           target="_blank" 
+           class="payment-method">Kredit</a>
+        <a href="https://wa.me/6281312161726?text=Halo%20saya%20ingin%20bertanya%20syarat%20pembelian%20COD" 
+           target="_blank" 
+           class="payment-method">COD</a>
+    </div>
+</div>
+        <!-- Produk Yamaha -->
+<!-- Produk Yamaha -->
+<div class="products">
+    <h3 class="section-title">Produk Unggulan Yamaha</h3>
+    <div class="product-grid">
+        
+        <!-- Product 1 -->
+        <div class="product">
+            <div class="product-img-container">
+                <img src="https://www.yamaha-motor.co.id/uploads/products/new_product_model_image/2025030522181612285O51534.png" alt="AEROX ALPHA TURBO" class="product-img">
             </div>
+            <div class="product-name">GEAR ULTIMA HYBRID S</div>
+            <a href="" 
+               class="product-price" target="_blank">
+               Rp 23.800.000
+            </a>
         </div>
         
-        <!-- Produk Yamaha -->
-<!-- Product 1 -->
-<div class="product">
-    <div class="product-img-container">
-        <img src="https://www.yamaha-motor.co.id/uploads/products/new_product_model_image/2024121816245412448D77386.png" alt="AEROX ALPHA TURBO" class="product-img">
+        <!-- Product 2 -->
+        <div class="product">
+            <div class="product-img-container">
+                <img src="https://www.yamaha-motor.co.id/uploads/products/new_product_model_image/2025030522215120818X79618.png" alt="GEAR ULTIMA HYBRID" class="product-img">
+            </div>
+            <div class="product-name">GEAR ULTIMA HYBRID</div>
+            <a href="" 
+               class="product-price" target="_blank">
+               Rp 21.950.000
+            </a>
+        </div>
+        
+        <!-- Product 3 -->
+        <div class="product">
+            <div class="product-img-container">
+                <img src="https://www.yamaha-motor.co.id/uploads/products/new_product_model_image/2025070409415976337A27649.png" alt="YAMAHA X-RIDE 125" class="product-img">
+            </div>
+            <div class="product-name">YAMAHA X-RIDE 125</div>
+            <a href="" 
+               class="product-price" target="_blank">
+               Rp 23.189.000
+            </a>
+        </div>
+                <!-- Product 4 -->
+        <div class="product">
+            <div class="product-img-container">
+                <img src="https://www.yamaha-motor.co.id/uploads/products/new_product_model_image/2025051911283817688W57116.png" alt="YAMAH MIO M3" class="product-img">
+            </div>
+            <div class="product-name">YAMAHA MIO M3</div>
+            <a href="" 
+               class="product-price" target="_blank">
+               Rp 20.563.000
+            </a>
+        </div>
+        
+        <!-- Product 5 -->
+        <div class="product">
+            <div class="product-img-container">
+                <img src="https://www.yamaha-motor.co.id/uploads/products/new_product_model_image/2025060914390790747E27231.png" alt="YAMAHA FREEGO 125" class="product-img">
+            </div>
+            <div class="product-name">YAMAHA FREEGO 125</div>
+            <a href="" 
+               class="product-price" target="_blank">
+               Rp 24.623.000
+            </a>
+        </div>
+        
+        <!-- Product 6 -->
+        <div class="product">
+            <div class="product-img-container">
+                <img src="https://www.yamaha-motor.co.id/uploads/products/new_product_model_image/2024020213472067401H24864.png" alt="FILANO HYBRID LUX" class="product-img">
+            </div>
+            <div class="product-name">FILANO HYBRID LUX</div>
+            <a href="0" 
+               class="product-price" target="_blank">
+               Rp 30.934.000
+            </a>
+        </div>
+                <!-- Product 7 -->
+        <div class="product">
+            <div class="product-img-container">
+                <img src="https://www.yamaha-motor.co.id/uploads/products/new_product_model_image/2024020213481067732Y32927.png" alt="FILANO HYBRID NEO" class="product-img">
+            </div>
+            <div class="product-name">FILANO HYBRID NEO</div>
+            <a href="" 
+               class="product-price" target="_blank">
+               Rp 30.217.000
+            </a>
+        </div>
+        
+        <!-- Product 8 -->
+        <div class="product">
+            <div class="product-img-container">
+                <img src="https://www.yamaha-motor.co.id/uploads/products/new_product_model_image/2024100709252593471K95699.png" alt="XMAX 250 Connected" class="product-img">
+            </div>
+            <div class="product-name">XMAX 250 CONNECTED</div>
+            <a href="" 
+               class="product-price" target="_blank">
+               Rp 71.867.000
+            </a>
+        </div>
+        
+        <!-- Product 9 -->
+        <div class="product">
+            <div class="product-img-container">
+                <img src="https://www.yamaha-motor.co.id/uploads/products/new_product_model_image/2024081909173228626E31666.png" alt="NMAX TURBO" class="product-img">
+            </div>
+            <div class="product-name">NMAX TURBO</div>
+            <a href="" 
+               class="product-price" target="_blank">
+               Rp 41.626.000
+            </a>
+        </div>
+                <!-- Product 10 -->
+        <div class="product">
+            <div class="product-img-container">
+                <img src="https://www.yamaha-motor.co.id/uploads/products/new_product_model_image/2024061119281348784W8996.png" alt="NMAX NEO VERSION" class="product-img">
+            </div>
+            <div class="product-name">NMAX NEO VERSION </div>
+            <a href="" 
+               class="product-price" target="_blank">
+               Rp 36.440.000
+            </a>
+        </div>
+        
+        <!-- Product 11 -->
+        <div class="product">
+            <div class="product-img-container">
+                <img src="https://www.yamaha-motor.co.id/uploads/products/new_product_model_image/202408190917345976S21101.png" alt="NMAX NEO S VERSION" class="product-img">
+            </div>
+            <div class="product-name">NMAX NEO S VERSION</div>
+            <a href="" 
+               class="product-price" target="_blank">
+               Rp 37.440.000
+            </a>
+        </div>
+
+        <!-- Product 12 -->
+        <div class="product">
+            <div class="product-img-container">
+                <img src="https://www.yamaha-motor.co.id/uploads/products/new_product_model_image/2024121816271958241V45290.png" alt="AEROX ALPHA TURBO" class="product-img">
+            </div>
+            <div class="product-name">AEROX ALPHA TURBO</div>
+            <a href="" 
+               class="product-price" target="_blank">
+               Rp 43.736.000
+            </a>
+        </div>
+                <!-- Product 1 -->
+        <div class="product">
+            <div class="product-img-container">
+                <img src="https://www.yamaha-motor.co.id/uploads/products/new_product_model_image/2024121816284277171U46926.png" alt="AEROX ALPHA CYBERCITY" class="product-img">
+            </div>
+            <div class="product-name">AEROX ALPHA CYBERCITY</div>
+            <a href="" 
+               class="product-price" target="_blank">
+               Rp 37.131.000
+            </a>
+        </div>
+        
+        <!-- Product 2 -->
+        <div class="product">
+            <div class="product-img-container">
+                <img src="" alt="AEROX ALPHA" class="product-img">
+            </div>
+            <div class="product-name">AEROX ALPHA</div>
+            <a href="" 
+               class="product-price" target="_blank">
+               Rp 32.474.000
+            </a>
+        </div>
+        
+        <!-- Product 3 -->
+        <div class="product">
+            <div class="product-img-container">
+                <img src="https://www.yamaha-motor.co.id/uploads/products/new_product_model_image/2023102416255597157E83827.png" alt="AEROX 155" class="product-img">
+            </div>
+            <div class="product-name">AEROX 155</div>
+            <a href="" 
+               class="product-price" target="_blank">
+               Rp 31.525.000
+            </a>
+        </div>
+                       <!-- Product 1 -->
+        <div class="product">
+            <div class="product-img-container">
+                <img src="https://www.yamaha-motor.co.id/uploads/products/new_product_model_image/2024011612393963487I38488.png" alt="LEXI LX 155" class="product-img">
+            </div>
+            <div class="product-name">LEXI LX 155</div>
+            <a href="" 
+               class="product-price" target="_blank">
+               Rp 28.495.000
+            </a>
+        </div>
+        
+                <!-- Product 2 -->
+        <div class="product">
+            <div class="product-img-container">
+                <img src="https://www.yamaha-motor.co.id/uploads/products/new_product_model_image/2024121208304566420S94904.png" alt="YAMAHA MX KING 150" class="product-img">
+            </div>
+            <div class="product-name">YAMAHA MX KING 150</div>
+            <a href="" 
+               class="product-price" target="_blank">
+               Rp 29.750.000
+            </a>
+        </div>
+        
+        <!-- Product 3 -->
+        <div class="product">
+            <div class="product-img-container">
+                <img src="https://www.yamaha-motor.co.id/uploads/products/new_product_model_image/2025061108303017327J72634.png" alt="JUPITER Z1" class="product-img">
+            </div>
+            <div class="product-name">JUPITER Z1</div>
+            <a href="" 
+               class="product-price" target="_blank">
+               Rp 23.485.000
+            </a>
+        </div>
+        
+        <!-- Product 2 -->
+        <div class="product">
+            <div class="product-img-container">
+                <img src="https://www.yamaha-motor.co.id/uploads/products/new_product_model_image/2022122614535230076F30677.png" alt="YAMAHA XSR 155" class="product-img">
+            </div>
+            <div class="product-name">YAMAHAN XSR 155</div>
+            <a href="" 
+               class="product-price" target="_blank">
+               Rp 44.505.000
+            </a>
+        </div>
+        
+        <!-- Product 3 -->
+        <div class="product">
+            <div class="product-img-container">
+                <img src="https://www.yamaha-motor.co.id/uploads/products/new_product_model_image/2024120608332924259E57645.png" alt="YAMAHA WR155R" class="product-img">
+            </div>
+            <div class="product-name">YAMAHA WR155R</div>
+            <a href="" 
+               class="product-price" target="_blank">
+               Rp 43.767.000
+            </a>
+        </div>
     </div>
-    <div class="product-name">AEROX ALPHA TURBO</div>
-    <div class="product-type">TYPE: MAXI</div>
-    <a href="https://wa.me/6281312161726?text=Halo%20saya%20ingin%20tanya%20tentang%20AEROX%20ALPHA%20TURBO%20dengan%20harga%20Rp%2043.736.000" 
-       class="product-price" target="_blank">
-       Rp 43.736.000
-    </a>
 </div>
 
-<!-- Product 2 -->
-<div class="product">
-    <div class="product-img-container">
-        <img src="https://www.yamaha-motor.co.id/uploads/products/new_product_model_image/2024101111100398609D40409.png" alt="FAZZIO HYBRID" class="product-img">
+<!-- Footer -->
+<div class="footer">
+    <h3 class="footer-title">Hubungi Kami</h3>
+    <div class="contact-info">
+        <p><i class="fas fa-map-marker-alt"></i> 
+            <a href="https://www.google.com/maps?q=SENTRAL+YAMAHA+MAKASSAR,+Jl.+A.+P.+Pettarani+No.18,+Tamamaung,+Kec.+Panakkukang,+Kota+Makassar,+Sulawesi+Selatan" 
+               target="_blank" 
+               style="color: inherit; text-decoration: none;">
+               SENTRAL YAMAHA MAKASSAR
+            </a>
+        </p>
+        <p>Jl. A. P. Pettarani No.18, Tamamaung, Kec. Panakkukang, Kota Makassar</p>
+        <p>Sulawesi Selatan, Indonesia</p>
+        <p><i class="fas fa-phone"></i> 
+            <a href="https://wa.me/6281312161726" 
+               target="_blank" 
+               style="color: inherit; text-decoration: none;">
+               +62 813-1216-1726
+            </a>
+        </p>
     </div>
-    <div class="product-name">FAZZIO HYBRID LUX</div>
-    <div class="product-type">TYPE: CLASSY</div>
-    <a href="https://wa.me/6281312161726?text=Halo%20saya%20ingin%20tanya%20tentang%20FAZZIO%20HYBRID%20dengan%20harga%20Rp%2023.670.000" 
-       class="product-price" target="_blank">
-       Rp 23.670.000
-    </a>
-</div>
-
-<!-- Product 3 -->
-<div class="product">
-    <div class="product-img-container">
-        <img src="https://www.yamaha-motor.co.id/uploads/products/new_product_model_image/2024020213472067401H24864.png" alt="FILANO HYBRID NEW" class="product-img">
+    <div class="social-links">
+        <a href="https://wa.me/6281312161726" class="social-link" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <a href="https://www.tiktok.com/@sentral.yamaha.mks?_t=ZS-8zS1efsNJ32&_r=1" class="social-link" target="_blank">
+            <i class="fab fa-tiktok"></i>
+        </a>
     </div>
-    <div class="product-name">FILANO HYBRID LUX</div>
-    <div class="product-type">TYPE: CLASSY</div>
-    <a href="https://wa.me/6281312161726?text=Halo%20saya%20ingin%20tanya%20tentang%20FILANO%20HYBRID%20NEW%20dengan%20harga%20Rp%2030.271.000" 
-       class="product-price" target="_blank">
-       Rp 30.271.000
-    </a>
 </div>
-        <!-- Footer -->
-        <div class="footer">
-            <h3 class="footer-title">Hubungi Kami</h3>
-            <div class="contact-info">
-                <p><i class="fas fa-map-marker-alt"></i> SENTRAL YAMAHA MAKASSAR</p>
-                <p>Jl. A. P. Pettarani No.18, Tamamaung, Kec. Panakkukang, Kota Makassar</p>
-                <p>Sulawesi Selatan, Indonesia</p>
-                <p><i class="fas fa-phone"></i>+62 813-1216-1726</p>
-            </div>
-            <div class="social-links">
-                <a href="https://wa.me/6281312161726" class="social-link" target="_blank">
-                    <i class="fab fa-whatsapp"></i>
-                </a>
-                <a href="https://www.tiktok.com/@sentral.yamaha.mks?_t=ZS-8zS1efsNJ32&_r=1" class="social-link" target="_blank">
-                    <i class="fab fa-tiktok"></i>
-                </a>
-            </div>
         </div>
     </div>
 
     <script>
-        // Function untuk zoom foto profil
-        document.getElementById('profile-img-container').addEventListener('click', function() {
-            const profileImg = document.getElementById('profile-img');
-            profileImg.classList.toggle('zoomed');
-        });
+// Zoom Foto Profil pakai modal fullscreen
+const profileImg = document.getElementById("profile-img");
+const modal = document.getElementById("profile-modal");
+const modalImg = document.getElementById("modal-img");
+const closeBtn = document.querySelector(".profile-modal .close");
+
+profileImg.onclick = function() {
+  modal.style.display = "block";
+  modalImg.src = this.src;
+}
+
+closeBtn.onclick = function() {
+  modal.style.display = "none";
+}
+
+modal.onclick = function(e) {
+  if (e.target === modal) {
+    modal.style.display = "none";
+  }
+}
         
         // Menambahkan efek saat halaman dimuat
         document.addEventListener('DOMContentLoaded', function() {
@@ -588,4 +897,4 @@ perusahaan kami bergerak di bidang otomotif penjualan sepeda motor yamaha se sul
         });
     </script>
 </body>
-      </html>
+    </html>
